@@ -7,11 +7,6 @@ Ollama Deep Researcher is a fully local web research assistant that uses any LLM
 Short summary:
 <video src="https://github.com/user-attachments/assets/02084902-f067-4658-9683-ff312cab7944" controls></video>
 
-## 📺 Video Tutorials
-
-See it in action or build it yourself? Check out these helpful video tutorials:
-- [Overview of Ollama Deep Researcher with R1](https://www.youtube.com/watch?v=sGUjmyfof4Q) - Load and test [DeepSeek R1](https://api-docs.deepseek.com/news/news250120) [distilled models](https://ollama.com/library/deepseek-r1).
-- [Building Ollama Deep Researcher from Scratch](https://www.youtube.com/watch?v=XGuTzHoqlj8) - Overview of how this is built.
 
 ## 🚀 Quickstart
 
@@ -39,7 +34,7 @@ cp .env.example .env
 
 The following environment variables are supported:
 
-  * `OLLAMA_BASE_URL` - the endpoint of the Ollama service, defaults to `http://localhost:11434` if not set 
+  * `OLLAMA_BASE_URL` - the endpoint of the Ollama service, defaults to `http://localhost:11434` if not set
   * `OLLAMA_MODEL` - the model to use, defaults to `llama3.2` if not set
   * `SEARCH_API` - the search API to use, either `duckduckgo` (default) or `tavily` or `perplexity`. You need to set the corresponding API key if tavily or perplexity is used.
   * `TAVILY_API_KEY` - the tavily API key to use
@@ -75,7 +70,7 @@ ollama pull deepseek-r1:8b
 git clone https://github.com/langchain-ai/ollama-deep-researcher.git
 cd ollama-deep-researcher
 ```
- 
+
 4. Select a web search tool, as above.
 
 5. (Recommended) Create a virtual environment: Install `Python 3.11` (and add to PATH during installation). Restart your terminal to ensure Python is available, then create and activate a virtual environment:
@@ -90,7 +85,7 @@ python -m venv .venv
 ```powershell
 # Install dependencies
 pip install -e .
-pip install -U "langgraph-cli[inmem]"            
+pip install -U "langgraph-cli[inmem]"
 
 # Start the LangGraph server
 langgraph dev
@@ -110,8 +105,8 @@ When you launch LangGraph server, you should see the following output and Studio
 Open `LangGraph Studio Web UI` via the URL in the output above.
 
 In the `configuration` tab:
-* Pick your web search tool (DuckDuckGo, Tavily, or Perplexity) (it will by default be `DuckDuckGo`) 
-* Set the name of your local LLM to use with Ollama (it will by default be `llama3.2`) 
+* Pick your web search tool (DuckDuckGo, Tavily, or Perplexity) (it will by default be `DuckDuckGo`)
+* Set the name of your local LLM to use with Ollama (it will by default be `llama3.2`)
 * You can set the depth of the research iterations (it will by default be `3`)
 
 <img width="1621" alt="Screenshot 2025-01-24 at 10 08 31 PM" src="https://github.com/user-attachments/assets/7cfd0e04-28fd-4cfa-aee5-9a556d74ab21" />
@@ -124,13 +119,13 @@ Give the assistant a topic for research, and you can visualize its process!
 
 When selecting a local LLM, note that this application relies on the model's ability to produce structured JSON output. Some models may have difficulty with this requirement:
 
-- **Working well**: 
+- **Working well**:
   - [Llama2 3.2](https://ollama.com/library/llama3.2)
   - [DeepSeek R1 (8B)](https://ollama.com/library/deepseek-r1:8b)
-  
+
 - **Known issues**:
   - [DeepSeek R1 (7B)](https://ollama.com/library/deepseek-llm:7b) - Currently has difficulty producing required JSON output
-  
+
 If you [encounter JSON-related errors](https://github.com/langchain-ai/ollama-deep-researcher/issues/18) (e.g., `KeyError: 'query'`), try switching to one of the confirmed working models.
 
 ### Browser Compatibility Note
@@ -192,10 +187,10 @@ $ docker build -t ollama-deep-researcher .
 Run the container:
 ```
 $ docker run --rm -it -p 2024:2024 \
-  -e SEARCH_API="tavily" \ 
+  -e SEARCH_API="tavily" \
   -e TAVILY_API_KEY="tvly-***YOUR_KEY_HERE***" \
   -e OLLAMA_BASE_URL="http://host.docker.internal:11434/" \
-  -e OLLAMA_MODEL="llama3.2" \  
+  -e OLLAMA_MODEL="llama3.2" \
   ollama-deep-researcher
 ```
 
